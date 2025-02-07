@@ -1,121 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="postaverse-web-verification" content="a92707da6f6d4c5c9d9971b11d976625">
-    <title>Profile Page</title>
-    <!-- FAVICON -->
-    <link rel="icon" href="/images/image.png" type="image/png">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        .tab-button.active {
-            background-color: #2d3748;
-            color: #fff;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calvare's Profile</title>
+  <link rel="icon" href="/images/image.png" type="image/png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Subtle fade-in effect */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in {
+      animation: fadeIn 1s ease-out forwards;
+    }
+    /* Simple hover scale effect */
+    .hover-scale:hover {
+      transform: scale(1.05);
+      transition: transform 0.2s ease-in-out;
+    }
+  </style>
 </head>
+<body class="bg-gray-800 text-white">
+  <!-- Introduction Section -->
+  <header class="w-full py-12 text-center fade-in">
+    <h1 class="text-3xl md:text-5xl font-bold">Hey guys, my name's Calvare!</h1>
+    <p class="mt-4 text-lg md:text-xl">Music Composer and Minecraft Content Creator</p>
+  </header>
 
-<body class="bg-gray-800 flex justify-center items-center h-screen">
-    <div class="w-full max-w-md text-center">
-        <!-- Tabs -->
-        <div class="flex justify-around bg-gray-700 p-4 rounded-t-lg">
-            <button class="tab-button px-4 py-2 text-blue-200 font-semibold" onclick="showTab('profile')">Profile</button>
-            <button class="tab-button px-4 py-2 text-blue-200 font-semibold" onclick="showTab('about')">About</button>
-            <button class="tab-button px-4 py-2 text-blue-200 font-semibold" onclick="showTab('socials')">Social Links</button>
-        </div>
+  <!-- Social Media Links Section -->
+  <main class="w-full px-4 md:px-12">
+    <section class="flex flex-col md:flex-row justify-center items-center gap-8 fade-in">
+      <!-- YouTube Link -->
+      <a href="https://www.youtube.com/@Calvare16" target="_blank" class="flex items-center bg-gray-700 rounded-full p-4 shadow-lg hover-scale">
+        <svg width="40" height="40" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="none">
+          <path fill="red" d="M14.712 4.633a1.754 1.754 0 00-1.234-1.234C12.382 3.11 8 3.11 8 3.11s-4.382 0-5.478.289c-.6.161-1.072.634-1.234 1.234C1 5.728 1 8 1 8s0 2.283.288 3.367c.162.6.635 1.073 1.234 1.234C3.618 12.89 8 12.89 8 12.89s4.382 0 5.478-.289a1.754 1.754 0 001.234-1.234C15 10.272 15 8 15 8s0-2.272-.288-3.367z" />
+          <path fill="#ffffff" d="M6.593 10.11l3.644-2.098-3.644-2.11v4.208z" />
+        </svg>
+        <span class="ml-4 text-lg md:text-xl">YouTube</span>
+      </a>
 
-        <!-- Profile Section -->
-        <div id="profile" class="tab-content active">
-            <div class="flex flex-col items-center mt-4">
-                <img src="/images/image.png" alt="Profile Picture" class="rounded-full w-48 h-48 mb-4">
-                <h1 class="text-2xl font-bold text-blue-100">Calvare</h1>
-                <p class="text-lg text-blue-200 mb-4">Music Composer and Minecraft content Creator</p>
-            </div>
-        </div>
+      <!-- Scratch Link -->
+      <a href="https://scratch.mit.edu/users/Calvare" target="_blank" class="flex items-center bg-gray-700 rounded-full p-4 shadow-lg hover-scale">
+        <svg fill="#FFA500" width="40" height="40" viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg">
+          <title>Scratch icon</title>
+          <path d="M11.406 11.312c-.78-.123-1.198-.654-.99-2.295l.023-.198c.175-1.426.321-1.743.996-1.706.198.013.426.14.654.33.211.247.68.568.945 1.204.19.466.254.77.281 1.098l.042.402v-.002a.68.68 0 0 0 1.342-.007c.008-.044.176-4.365.176-4.436 0-.38-.302-.69-.68-.696a.685.685 0 0 0-.682.688c0 .009-.001.605-.014 1.206-.536-.592-1.223-1.123-1.994-1.17-2.058-.11-2.283 1.811-2.419 2.918l-.02.196c-.278 2.189.441 3.569 2.13 3.837 1.838.293 3.063.72 3.074 1.868.007.446-.224.903-.627 1.254a2.163 2.163 0 0 1-1.749.507 3.233 3.233 0 0 1-.539-.141c-.24-.136-.847-.51-1.154-.942-.26-.364-.35-.937-.378-1.3.004-.163.005-.27.005-.283a.69.69 0 0 0-.669-.703.689.689 0 0 0-.696.682c0 .013-.017 1.367-.066 2.183-.07 1.313 0 2.426 0 2.474.028.382.35.67.727.644a.681.681 0 0 0 .635-.733c0-.006-.033-.545-.029-1.29a5.21 5.21 0 0 0 1.938.773 3.451 3.451 0 0 0 2.856-.82c.713-.619 1.122-1.464 1.11-2.32-.024-2.555-2.865-3.004-4.228-3.222" />
+        </svg>
+        <span class="ml-4 text-lg md:text-xl">Scratch</span>
+      </a>
 
-        <!-- About Section -->
-        <div id="about" class="tab-content">
-            <hr>
-            <div class="mt-4 mb-4 space-y-4">
-                <p class="text-blue-200">Hey guys, my name's Calvare! I enjoy composing music, playing video games, coding, and overall so many things that I can't share! What I can share are my socials!</p>
-            </div>
-            <hr>
-        </div>
+      <!-- SoundCloud Link -->
+      <a href="https://soundcloud.com/midnightsongs" target="_blank" class="flex items-center bg-gray-700 rounded-full p-4 shadow-lg hover-scale">
+        <img src="https://ugc.production.linktr.ee/4e0f63d9-5310-41a2-948f-27cc7df7f2c5_1056448.png?io=true&amp;size=thumbnail-stack-v1_0" alt="SoundCloud Logo" class="w-10 h-10 md:w-12 md:h-12 rounded-full">
+        <span class="ml-4 text-lg md:text-xl">SoundCloud</span>
+      </a>
+    </section>
+  </main>
 
-        <!-- Social Links Section -->
-        <div id="socials" class="tab-content">
-            <div class="mt-8 space-y-4">
-                <!-- YouTube Link -->
-                <a href="https://www.youtube.com/@Calvare16" target="_blank">
-                    <div class="flex items-center justify-between bg-gray-600 rounded-full px-4 py-2 shadow">
-                        <div class="flex items-center space-x-3">
-                            <svg width="40px" height="40px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="none">
-                                <path fill="red" d="M14.712 4.633a1.754 1.754 0 00-1.234-1.234C12.382 3.11 8 3.11 8 3.11s-4.382 0-5.478.289c-.6.161-1.072.634-1.234 1.234C1 5.728 1 8 1 8s0 2.283.288 3.367c.162.6.635 1.073 1.234 1.234C3.618 12.89 8 12.89 8 12.89s4.382 0 5.478-.289a1.754 1.754 0 001.234-1.234C15 10.272 15 8 15 8s0-2.272-.288-3.367z" />
-                                <path fill="#ffffff" d="M6.593 10.11l3.644-2.098-3.644-2.11v4.208z" />
-                            </svg>
-                            <span class="text-blue-200">YouTube</span>
-                        </div>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7" />
-                        </svg>
-                    </div>
-                </a>
+  <!-- Footer -->
+  <footer class="w-full py-8 text-center text-sm text-gray-400 fade-in">
+    <!-- Blue text (separate from copyright) -->
+    <p id="blue-text" class="mt-4 text-blue-400">Be yourself!</p>
+    <p id="copyright">
+      &copy; <span id="year"></span> Calvare • All rights reserved.
+    </p>
+  </footer>
 
-                <!-- Scratch Link -->
-                <a href="https://scratch.mit.edu/users/Calvare" target="_blank">
-                    <div class="flex items-center justify-between bg-gray-600 rounded-full px-4 py-2 shadow">
-                        <div class="flex items-center space-x-3">
-                            <svg fill="#FFA500" width="40px" height="40px" viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg">
-                                <title>Scratch icon</title>
-                                <path d="M11.406 11.312c-.78-.123-1.198-.654-.99-2.295l.023-.198c.175-1.426.321-1.743.996-1.706.198.013.426.14.654.33.211.247.68.568.945 1.204.19.466.254.77.281 1.098l.042.402v-.002a.68.68 0 0 0 1.342-.007c.008-.044.176-4.365.176-4.436 0-.38-.302-.69-.68-.696a.685.685 0 0 0-.682.688c0 .009-.001.605-.014 1.206-.536-.592-1.223-1.123-1.994-1.17-2.058-.11-2.283 1.811-2.419 2.918l-.02.196c-.278 2.189.441 3.569 2.13 3.837 1.838.293 3.063.72 3.074 1.868.007.446-.224.903-.627 1.254a2.163 2.163 0 0 1-1.749.507 3.233 3.233 0 0 1-.539-.141c-.24-.136-.847-.51-1.154-.942-.26-.364-.35-.937-.378-1.3.004-.163.005-.27.005-.283a.69.69 0 0 0-.669-.703.689.689 0 0 0-.696.682c0 .013-.017 1.367-.066 2.183-.07 1.313 0 2.426 0 2.474.028.382.35.67.727.644a.681.681 0 0 0 .635-.733c0-.006-.033-.545-.029-1.29a5.21 5.21 0 0 0 1.938.773 3.451 3.451 0 0 0 2.856-.82c.713-.619 1.122-1.464 1.11-2.32-.024-2.555-2.865-3.004-4.228-3.222" />
-                            </svg>
-                            <span class="text-blue-200">Scratch</span>
-                        </div>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7" />
-                        </svg>
-                    </div>
-                </a>
-
-                <!-- SoundCloud Link -->
-                <a href="https://soundcloud.com/midnightsongs" target="_blank">
-                    <div class="flex items-center justify-between bg-gray-600 rounded-full px-4 py-2 shadow">
-                        <div class="flex items-center space-x-3">
-                            <img src="https://ugc.production.linktr.ee/4e0f63d9-5310-41a2-948f-27cc7df7f2c5_1056448.png?io=true&amp;size=thumbnail-stack-v1_0" alt="" class="w-10 h-10 rounded-full">
-                            <span class="text-blue-200">SoundCloud</span>
-                        </div>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7" />
-                        </svg>
-                    </div>
-                </a>
-            </div>
-        </div>
+  <!-- Contact Modal -->
+  <div id="contactModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+    <div class="bg-gray-900 p-8 rounded-lg shadow-lg w-11/12 md:w-1/2 fade-in">
+      <h2 class="text-2xl font-bold mb-4">Contact Me</h2>
+      <p class="mb-4">Contact Email: <a href="mailto:theodoremassey123@yahoo.com" class="text-blue-400 hover:underline">theodoremassey123@yahoo.com</a></p>
+      <p class="mb-4">
+        Life is just one big loop. You wake up, go about your day, sleep, and then do it all over again. The days blur together, time moves forward whether we want it to or not, and no matter how much we try to make things feel meaningful, it all just fades eventually. People come and go, memories that once felt unshakable start to disappear, and in the end, we’re all just tiny, forgettable pieces of something too big to care about us. No matter how much we build, create, or love, the world keeps spinning like we were never here at all. But while we’re all stuck in this endless cycle, I make Minecraft videos and music to entertain you. So, at least there’s that.
+      </p>
+      <button onclick="toggleContactModal()" class="mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
+        Close
+      </button>
     </div>
+  </div>
 
-    <script>
-        function showTab(tabName) {
-            const tabs = document.querySelectorAll('.tab-content');
-            const tabButtons = document.querySelectorAll('.tab-button');
-            
-            tabs.forEach(tab => tab.classList.remove('active'));
-            tabButtons.forEach(button => button.classList.remove('active'));
+  <!-- Contact Button -->
+  <button onclick="toggleContactModal()" class="fixed bottom-4 right-4 bg-blue-500 text-white py-3 px-6 rounded-full shadow-lg hover:bg-blue-600 fade-in">
+    Contact
+  </button>
 
-            document.getElementById(tabName).classList.add('active');
-            const activeButton = Array.from(tabButtons).find(button => button.textContent.toLowerCase() === tabName);
-            activeButton.classList.add('active');
-        }
-    </script>
+  <script>
+    // Set current year dynamically
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // Toggle contact modal visibility
+    function toggleContactModal() {
+      const modal = document.getElementById('contactModal');
+      modal.classList.toggle('hidden');
+    }
+  </script>
 </body>
-
 </html>
