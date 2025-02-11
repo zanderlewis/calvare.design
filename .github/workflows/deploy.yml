@@ -4,13 +4,30 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v2
+  
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+  
+      - name: Clean up and install dependencies
+        run: |
+          rm -rf package-lock.json node_modules
+          npm install
+  
+      - name: Install astro globally
+        run: npm install -g astro
+  
+      - name: Build project
+        run: npm run build
 
       - name: Install sshpass
         run: sudo apt-get install -y sshpass
@@ -31,4 +48,4 @@ jobs:
           HOST: ${{ secrets.HOST }}
           DEPLOY_PATH: calvare.design/
         run: |
-          sshpass -p "$PASSWORD" rsync -avz --delete --exclude .git/ ./ $USERNAME@$HOST:$DEPLOY_PATH
+          sshpass -p "$PASSWORD" rsync -avz --delete --exclude .git/ --exclude node_modules/ ./ $USERNAME@$HOST:$DEPLOY_PATH
