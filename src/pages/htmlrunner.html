@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Runner</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        textarea {
+            width: 98%;
+            height: 400px; /* Increased height */
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: monospace; /* Good for code */
+            font-size: 14px;
+            resize: vertical; /* Allow vertical resizing */
+            margin-bottom: 15px;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 12px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        button:active {
+            background-color: #004085;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>HTML Runner</h1>
+        <p>Enter your HTML code below and click the button to run it in a new tab.</p>
+
+        <label for="htmlInput">HTML Code:</label>
+        <textarea id="htmlInput" placeholder="<!DOCTYPE html>
+<html>
+<head>
+    <title>My Test Page</title>
+</head>
+<body>
+    <h1>Hello World!</h1>
+    <p>This is rendered from the input.</p>
+</body>
+</html>"></textarea>
+
+        <button id="runButton">Run HTML in New Tab</button>
+    </div>
+
+    <script>
+        // Get references to the elements
+        const htmlInput = document.getElementById('htmlInput');
+        const runButton = document.getElementById('runButton');
+
+        // Add event listener to the button
+        runButton.addEventListener('click', () => {
+            // Get the HTML code from the textarea
+            const htmlCode = htmlInput.value;
+
+            // Open a new browser tab/window
+            // Using 
+'_blank' ensures it opens in a new context (usually tab)
+            const newTab = window.open();
+
+            if (newTab) {
+                // Write the HTML content into the new tab's document
+                newTab.document.open(); // Prepare the document for writing
+                newTab.document.write(htmlCode); // Write the user's HTML
+                newTab.document.close(); // Finish writing and render the page
+            } else {
+                // Handle cases where popup blockers might interfere
+                alert('Could not open new tab. Please check your popup blocker settings.');
+            }
+        });
+    </script>
+
+</body>
+</html>
