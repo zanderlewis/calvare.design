@@ -1,0 +1,20 @@
+---
+interface Props {
+  href: string;
+  name: string;
+  color: string;
+  hoverColor?: string;
+  shadowColor?: string;
+}
+
+const { href, name, color, hoverColor = color, shadowColor = color } = Astro.props;
+---
+
+<a
+  href={href}
+  target="_blank"
+  class={`group bg-gradient-to-r from-${color} to-${color}/80 hover:to-${hoverColor} text-white px-6 py-3 rounded-full flex items-center gap-2 transition-all duration-300 shadow-lg hover:shadow-${shadowColor}/20`}
+>
+  <slot name="icon" />
+  <span class="font-semibold">{name}</span>
+</a>

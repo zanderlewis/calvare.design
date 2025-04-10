@@ -1,0 +1,13 @@
+{
+    "metaData": {
+        "title": "Subpages"
+    },
+    "htmlPages": [
+        {
+            "name": "HTML Runner",
+            "path": "/htmlrunner.html",
+            "description": "Run and preview HTML code",
+            "icon": "💻"
+        }
+    ]
+}

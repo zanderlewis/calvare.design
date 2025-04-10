@@ -1,21 +1,29 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import HtmlPageButtons from "../components/HtmlPageButtons.astro";
+import SkillCard from "../components/SkillCard.astro";
+import ContentCard from "../components/ContentCard.astro";
+import SocialLink from "../components/SocialLink.astro";
+import ContactCard from "../components/ContactCard.astro";
+
+import home from "../data/home.json";
+import contact from "../data/contact.json";
+
+const contacts = contact.contacts;
+const contactsCount = Object.keys(contacts).length;
+const numContacts = 
+  contactsCount > 3 ? 3 :
+  contactsCount;
+const contactGridCols =
+  numContacts === 1 ? 'grid-cols-1' :
+  numContacts === 2 ? 'grid-cols-2' :
+  'grid-cols-3';
 ---
 
 <Layout title="Calvare">
   <main
     class="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-white relative overflow-hidden"
   >
-    <!-- Decorative Slices -->
-    <div
-      class="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-minecraft/20 to-soundcloud/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"
-    >
-    </div>
-    <div
-      class="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-scratch/20 to-red-600/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"
-    >
-    </div>
-
     <!-- Content Container -->
     <div class="container mx-auto px-4 py-16 relative">
       <!-- Hero Section -->
@@ -25,7 +33,7 @@ import Layout from "../layouts/Layout.astro";
             src="/profile-photo.png"
             alt="Calvare Profile Photo"
             class="w-32 h-32 rounded-lg shadow-lg border-4 border-transparent animate-border bg-clip-padding"
-            style="background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet) border-box;"
+            style="background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);"
           />
         </div>
 
@@ -51,115 +59,91 @@ import Layout from "../layouts/Layout.astro";
           Calvare
         </h1>
         <p class="text-xl text-gray-300">
-          Minecrafter | Music Producer | Scratch Developer
+          {home.content.description}
         </p>
       </div>
 
       <!-- About Me Section -->
       <div class="grid md:grid-cols-1 gap-8 mb-16">
-        <div
-          class="w-full bg-gray-800/30 p-8 rounded-xl backdrop-blur-sm border border-white/10 duration-300 hover:transform hover:-translate-y-1"
-        >
-          <h2 class="text-2xl font-bold mb-4 text-center">About Me</h2>
-          <p class="text-gray-400 text-center">
-            Life is just one big loop. You wake up, go about your day, sleep,
-            and then do it all over again. The days blur together, time moves
-            forward whether we want it to or not, and no matter how much we try
-            to make things feel meaningful, it all just fades eventually. People
-            come and go, memories that once felt unshakable start to disappear,
-            and in the end, we’re all just tiny, forgettable pieces of something
-            too big to care about us. No matter how much we build, create, or
-            love, the world keeps spinning like we were never here at all. But
-            while we’re all stuck in this endless cycle, I make Minecraft videos
-            and music to entertain you. So, at least there’s that.
-          </p>
-        </div>
+        <ContentCard
+          title="About Me"
+          content={home.content.about}
+        />
 
         <!-- Skills Section -->
         <div class="grid md:grid-cols-3 gap-8">
-          <div
-            class="group relative bg-gray-800/30 p-8 rounded-xl backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300 hover:transform hover:-translate-y-1"
-          >
-            <div
-              class="absolute inset-0 bg-gradient-to-br from-minecraft/5 to-transparent rounded-xl transition-opacity duration-300 opacity-0 group-hover:opacity-100"
-            >
-            </div>
-            <div class="relative">
-              <div class="text-minecraft text-4xl mb-4">🎮</div>
-              <h2 class="text-2xl font-bold mb-2">Minecraft</h2>
-              <p class="text-gray-400">Playing Minecraft</p>
-            </div>
-          </div>
+          <SkillCard
+            icon="🎮"
+            title="Minecraft"
+            description="Playing Minecraft"
+            color="minecraft"
+          />
 
-          <div
-            class="group relative bg-gray-800/30 p-8 rounded-xl backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300 hover:transform hover:-translate-y-1"
-          >
-            <div
-              class="absolute inset-0 bg-gradient-to-br from-soundcloud/5 to-transparent rounded-xl transition-opacity duration-300 opacity-0 group-hover:opacity-100"
-            >
-            </div>
-            <div class="relative">
-              <div class="text-soundcloud text-4xl mb-4">🎵</div>
-              <h2 class="text-2xl font-bold mb-2">Music Production</h2>
-              <p class="text-gray-400">Making Music</p>
-            </div>
-          </div>
+          <SkillCard
+            icon="🎵"
+            title="Music Production"
+            description="Making Music"
+            color="soundcloud"
+          />
 
-          <div
-            class="group relative bg-gray-800/30 p-8 rounded-xl backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300 hover:transform hover:-translate-y-1"
-          >
-            <div
-              class="absolute inset-0 bg-gradient-to-br from-scratch/5 to-transparent rounded-xl transition-opacity duration-300 opacity-0 group-hover:opacity-100"
-            >
-            </div>
-            <div class="relative">
-              <div class="text-scratch text-4xl mb-4">💻</div>
-              <h2 class="text-2xl font-bold mb-2">Scratch Development</h2>
-              <p class="text-gray-400">Creating games</p>
-            </div>
-          </div>
+          <SkillCard
+            icon="💻"
+            title="Scratch Development"
+            description="Creating games"
+            color="scratch"
+          />
+        </div>
+
+        <!-- HTML Pages Section -->
+        <div class="mt-8">
+          <HtmlPageButtons />
         </div>
 
         <!-- Contact Section -->
-        <div class="grid md:grid-cols-1 gap-8 mb-16">
+        <div class="grid gap-8 mb-16">
           <div
-            class="w-full bg-gray-800/30 p-8 rounded-xl backdrop-blur-sm border border-white/10 duration-300 hover:transform hover:-translate-y-1"
+            class="w-full bg-gray-800/30 p-8 rounded-xl backdrop-blur-sm border border-white/10 duration-300"
           >
             <h2 class="text-2xl font-bold mb-4 text-center">Contact Me</h2>
             <div
-              class="flex items-center justify-center gap-2 text-gray-300 hover:text-white transition-colors"
+              class={`grid ${contactGridCols} gap-4 justify-items-center`}
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+              <ContactCard
+                method={contacts.email.type}
+                value={contacts.email.data}
+                href={contacts.email.link}
               >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                ></path>
-              </svg>
-              <a href="mailto:alphaboy@cheerful.com" class="hover:underline">
-                alphaboy@cheerful.com
-              </a>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  ><path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  ></path></svg
+                >
+              </ContactCard>
             </div>
           </div>
         </div>
 
         <!-- Social Links -->
         <div class="flex flex-wrap justify-center gap-4">
-          <a
+          <SocialLink
             href="https://soundcloud.com/midnightsongs"
-            target="_blank"
-            class="group bg-gradient-to-r from-soundcloud to-soundcloud/80 hover:to-soundcloud text-white px-6 py-3 rounded-full flex items-center gap-2 transition-all duration-300 shadow-lg hover:shadow-soundcloud/20"
+            name="SoundCloud"
+            color="orange-600"
+            hoverColor="orange-600"
+            shadowColor="orange-600"
           >
             <svg
+              slot="icon"
               xmlns="http://www.w3.org/2000/svg"
-              class="w-8 h-8 transition-transform duration-300 group-hover:scale-110"
+              class="w-8 h-8 transition-transform duration-400 group-hover:scale-140"
               viewBox="0 0 24 24"
             >
               <path
@@ -167,17 +151,19 @@ import Layout from "../layouts/Layout.astro";
                 d="M 14.5 6 C 12.601563 6 11 6.90625 10 8.40625 L 10 17 L 20.5 17 C 22.398438 17 24 15.398438 24 13.5 C 24 11.601563 22.398438 10 20.5 10 C 20.300781 10 20.011719 9.992188 19.8125 10.09375 C 19.210938 7.695313 17 6 14.5 6 Z M 8 8 L 8 17 L 9 17 L 9 8.09375 C 8.699219 7.992188 8.300781 8 8 8 Z M 7 8.09375 C 6.601563 8.195313 6.300781 8.398438 6 8.5 L 6 17 L 7 17 Z M 5 9.40625 C 4.5 9.90625 4.195313 10.488281 4.09375 11.1875 L 4 11.1875 L 4 17 L 5 17 Z M 3 11 C 2.601563 11 2.300781 11.085938 2 11.1875 L 2 16.8125 C 2.300781 16.914063 2.601563 17 3 17 Z M 1 11.8125 C 0.398438 12.3125 0 13.101563 0 14 C 0 14.898438 0.398438 15.6875 1 16.1875 Z"
               ></path>
             </svg>
-            <span class="font-semibold">SoundCloud</span>
-          </a>
+          </SocialLink>
 
-          <a
+          <SocialLink
             href="https://scratch.mit.edu/users/Calvare"
-            target="_blank"
-            class="group bg-gradient-to-r from-scratch to-scratch/80 hover:to-scratch text-white px-6 py-3 rounded-full flex items-center gap-2 transition-all duration-300 shadow-lg hover:shadow-scratch/20"
+            name="Scratch"
+            color="yellow-600"
+            hoverColor="yellow-600"
+            shadowColor="yellow-600"
           >
             <svg
+              slot="icon"
               xmlns="http://www.w3.org/2000/svg"
-              class="w-8 h-8"
+              class="w-8 h-8 transition-transform duration-400 group-hover:scale-140"
               viewBox="0 0 48 48"
             >
               <path
@@ -188,19 +174,21 @@ import Layout from "../layouts/Layout.astro";
                 d="M32.99,35.65c-1.28,1.56-3.68,3.48-7.78,3.74c-0.47,0.03-0.94,0.05-1.39,0.04 c-1.08,1.79-3.03,2.92-5.16,2.92c-3.31,0-6-2.69-6-6v-7.56c-0.02-0.54,0-1.01,0.03-1.29c0.12-1.43,0.76-2.76,1.78-3.76 c-1.34-3-1.01-5.92-0.87-6.8c0.7-4.57,4.04-9.39,9.75-9.39h0.2c1.14-1.22,2.74-1.9,4.46-1.9h0.06c1.62,0.04,3.11,0.7,4.22,1.86 c1.1,1.16,1.69,2.68,1.65,4.29c-0.03,1.19-0.09,4.25-0.09,8.17c0,0.93-0.21,1.84-0.62,2.67c1.81,2.24,2.07,4.55,2.09,5.49 C35.41,29.4,35.37,32.77,32.99,35.65z"
               ></path><path
                 fill="#fb8c00"
-                d="M18.662,37.354c-0.553,0-1-0.447-1-1v-7.7c-0.021-0.409,0.001-0.677,0.004-0.711 c0.048-0.533,0.505-0.94,1.041-0.91c0.534,0.023,0.955,0.464,0.955,0.999v0.571c0.04,0.652,0.234,1.831,1.077,2.687 c0.847,0.861,2.198,1.243,4.014,1.119c1.289-0.084,2.243-0.49,2.835-1.209c0.919-1.114,0.747-2.679,0.745-2.694 c-0.009-0.068-0.01-0.139-0.005-0.208c0.002-0.073,0.024-2.324-4.46-3.095c-1.906-0.327-3.346-1.169-4.278-2.503 c-1.53-2.187-1.065-4.876-1.045-4.989c0.268-1.831,1.667-5.307,5.02-5.155c1.514,0.072,2.577,0.631,3.331,1.437 c0.021-1.474,0.043-2.353,0.043-2.37c0.014-0.543,0.459-0.975,1-0.975c0.008,0,0.017,0,0.025,0 c0.552,0.014,0.988,0.473,0.975,1.025c-0.001,0.034-0.087,3.513-0.087,8.297c0,0.532-0.417,0.972-0.948,0.999 c-0.526,0.02-0.991-0.366-1.047-0.896c-0.304-2.945-0.77-5.395-3.388-5.519c-0.038-0.002-0.076-0.003-0.114-0.003 c-2.282,0-2.814,3.342-2.836,3.486c-0.007,0.039-0.202,1.212,0.184,2.434c0.485,1.536,1.632,2.439,3.504,2.762 c5.835,1.002,6.124,4.406,6.12,5.106c0.041,0.452,0.142,2.513-1.194,4.134c-0.957,1.161-2.387,1.812-4.25,1.933 c-2.208,0.14-3.963-0.324-5.22-1.389v3.338C19.662,36.906,19.215,37.354,18.662,37.354z"
+                d="M18.662,37.354c-0.553,0-1-0.447-1-1v-7.7c-0.021-0.409,0-0.677,0.004-0.711 c0.048-0.533,0.505-0.94,1.041-0.91c0.534,0.023,0.955,0.464,0.955,0.999v0.571c0.04,0.652,0.234,1.831,1.077,2.687 c0.847,0.861,2.198,1.243,4.014,1.119c1.289-0.084,2.243-0.49,2.835-1.209c0.919-1.114,0.747-2.679,0.745-2.694 c-0.009-0.068-0.01-0.139-0.005-0.208c0.002-0.073,0.024-2.324-4.46-3.095c-1.906-0.327-3.346-1.169-4.278-2.503 c-1.53-2.187-1.065-4.876-1.045-4.989c0.268-1.831,1.667-5.307,5.02-5.155c1.514,0.072,2.577,0.631,3.331,1.437 c0.021-1.474,0.043-2.353,0.043-2.37c0.014-0.543,0.459-0.975,1-0.975c0.008,0,0.017,0,0.025,0 c0.552,0.014,0.988,0.473,0.975,1.025c-0.001,0.034-0.087,3.513-0.087,8.297c0,0.532-0.417,0.972-0.948,0.999 c-0.526,0.02-0.991-0.366-1.047-0.896c-0.304-2.945-0.77-5.395-3.388-5.519c-0.038-0.002-0.076-0.003-0.114-0.003 c-2.282,0-2.814,3.342-2.836,3.486c-0.007,0.039-0.202,1.212,0.184,2.434c0.485,1.536,1.632,2.439,3.504,2.762 c5.835,1.002,6.124,4.406,6.12,5.106c0.041,0.452,0.142,2.513-1.194,4.134c-0.957,1.161-2.387,1.812-4.25,1.933 c-2.208,0.14-3.963-0.324-5.22-1.389v3.338C19.662,36.906,19.215,37.354,18.662,37.354z"
               ></path>
             </svg>
-            <span class="font-semibold">Scratch</span>
-          </a>
+          </SocialLink>
 
-          <a
+          <SocialLink
             href="https://www.youtube.com/@Calvare16"
-            target="_blank"
-            class="group bg-gradient-to-r from-red-600 to-red-500 hover:to-red-600 text-white px-6 py-3 rounded-full flex items-center gap-2 transition-all duration-300 shadow-lg hover:shadow-red-600/20"
+            name="YouTube"
+            color="red-600"
+            hoverColor="red-600"
+            shadowColor="red-600"
           >
             <svg
-              class="w-8 h-8 transition-transform duration-300 group-hover:scale-110"
+              slot="icon"
+              class="w-8 h-8 transition-transform duration-400 group-hover:scale-140"
               fill="currentColor"
               viewBox="0 0 24 24"
             >
@@ -208,8 +196,7 @@ import Layout from "../layouts/Layout.astro";
                 d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
               ></path>
             </svg>
-            <span class="font-semibold">YouTube</span>
-          </a>
+          </SocialLink>
         </div>
       </div>
     </div>

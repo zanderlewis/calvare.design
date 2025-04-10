@@ -1,0 +1,9 @@
+{
+    "contacts": {
+        "email": {
+            "type": "email",
+            "data": "alphaboy@cheerful.com",
+            "link": "mailto:alphaboy@cheerful.com"
+        }
+    }
+}

@@ -1,0 +1,24 @@
+---
+interface Props {
+  icon: string;
+  title: string;
+  description: string;
+  color: string;
+}
+
+const { icon, title, description, color } = Astro.props;
+---
+
+<div
+  class="group relative bg-gray-800/30 p-8 rounded-xl backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300 hover:transform hover:-translate-y-1"
+>
+  <div
+    class={`absolute inset-0 bg-gradient-to-br from-${color}/5 to-transparent rounded-xl transition-opacity duration-300 opacity-0 group-hover:opacity-100`}
+  >
+  </div>
+  <div class="relative">
+    <div class={`text-${color} text-4xl mb-4`}>{icon}</div>
+    <h2 class="text-2xl font-bold mb-2">{title}</h2>
+    <p class="text-gray-400">{description}</p>
+  </div>
+</div>
