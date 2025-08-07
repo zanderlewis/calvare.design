@@ -11,14 +11,25 @@ const { title } = Astro.props;
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Portfolio of a Minecraft builder, music artist, and Scratch developer" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="Calvare - Digital Creator | Minecraft Builder, Music Producer & Scratch Developer" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Meta tags for social sharing -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content="Digital creator specializing in Minecraft content, music production, and Scratch development" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/profile-photo.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content="Digital creator specializing in Minecraft content, music production, and Scratch development" />
   </head>
-  <body class="font-['Inter',sans-serif]">
+  <body class="font-['Space_Grotesk',sans-serif] antialiased bg-slate-950">
     <slot />
   </body>
 </html>
@@ -26,5 +37,23 @@ const { title } = Astro.props;
 <style>
   html {
     scroll-behavior: smooth;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #1e293b;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #8b5cf6, #ec4899);
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #7c3aed, #db2777);
   }
 </style>

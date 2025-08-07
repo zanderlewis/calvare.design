@@ -12,26 +12,28 @@ const gridColsClass =
     numPages === 2 ? 'grid-cols-2' :
     'grid-cols-3';
 ---
-<div class="w-full bg-gray-800/30 p-8 rounded-xl backdrop-blur-sm border border-white/10 duration-300">
-    <h2 class="text-2xl font-bold mb-4 text-center">{metaData.title}</h2>
-    <div class={`grid ${gridColsClass} gap-4 ${htmlPages.length < 3 ? 'justify-items-center' : ''}`}>
+<div class="w-full">
+    <div class={`grid ${gridColsClass} gap-6 ${htmlPages.length < 3 ? 'justify-items-center' : ''}`}>
         {htmlPages.length > 0 ? (
             htmlPages.map((page) => (
                 <a
                     href={page.path.replace(/\.html$/, '')}
                     title={page.description}
                     target="_blank"
-                    class="group bg-gradient-to-r from-minecraft to-soundcloud/80 hover:to-scratch text-white px-8 py-6 rounded-lg flex flex-col items-center justify-center gap-2 transition-all duration-300 shadow-lg hover:shadow-scratch/20 hover:transform hover:-translate-y-1 outline outline-1 outline-white/10 hover:outline-white/20"
+                    rel="noopener noreferrer"
+                    class="group block p-8 rounded-xl hover:bg-white/5 transition-all duration-300 hover:scale-105 text-center"
                 >
-                    <span class="text-4xl">{page.icon}</span>
-                    <span class="font-bold text-xl">{page.name}</span>
-                    <span class="text-sm text-center">{page.description}</span>
+                    <div class="text-5xl mb-6">{page.icon}</div>
+                    <h3 class="text-xl font-bold mb-3 text-purple-400">{page.name}</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">{page.description}</p>
                 </a>
             ))
         ) : (
-            <p class="text-center text-gray-400">
-                No HTML pages configured in the pages data.
-            </p>
+            <div class="col-span-full text-center">
+                <div class="p-8 rounded-xl">
+                    <p class="text-slate-400">No projects configured yet.</p>
+                </div>
+            </div>
         )}
     </div>
 </div>

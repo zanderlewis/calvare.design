@@ -3,32 +3,30 @@ export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
     extend: {
-      colors: {
-        minecraft: '#44B74A',
-        soundcloud: '#ff5500',
-        scratch: '#4D97FF'
+      fontFamily: {
+        'space': ['Space Grotesk', 'sans-serif'],
+        'mono': ['JetBrains Mono', 'monospace']
+      },
+      animation: {
+        'spin-slow': 'spin 3s linear infinite',
+        'pulse-slow': 'pulse 4s ease-in-out infinite',
+        'float': 'float 6s ease-in-out infinite',
+        'glow': 'glow 2s ease-in-out infinite alternate'
+      },
+      keyframes: {
+        float: {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-20px)' }
+        },
+        glow: {
+          'from': { boxShadow: '0 0 20px rgba(139, 92, 246, 0.3)' },
+          'to': { boxShadow: '0 0 30px rgba(139, 92, 246, 0.6)' }
+        }
+      },
+      backdropBlur: {
+        'xs': '2px'
       }
     },
   },
-  plugins: [],
-  safelist: [
-    'from-yellow-600',
-    'to-yellow-600/80',
-    'hover:to-yellow-600',
-    'hover:shadow-yellow-600/20',
-    'from-orange-600',
-    'to-orange-600/80',
-    'hover:to-orange-600',
-    'hover:shadow-orange-600/20',
-    'from-blue-400',
-    'to-blue-400/80',
-    'hover:to-blue-400',
-    'hover:shadow-blue-400/20',
-    'text-blue-400',
-    'from-red-600',
-    'to-red-600/80',
-    'hover:to-red-600',
-    'hover:shadow-red-600/20',
-    'text-red-600',
-  ]
+  plugins: []
 }
